@@ -19,9 +19,9 @@ template <bool Aligned> void faster_corner_detect_9(const fast_byte* img, int im
    const int stride3 = 3*widthStep;
 
    // The compiler refuses to reserve a register for this
-   register const uint8x16_t barriers = vdupq_n_u8((unsigned char)barrier);
+   const uint8x16_t barriers = vdupq_n_u8((unsigned char)barrier);
    // cf. neon_test.m for more information about this mask
-   register const uint8x16_t magic_mask = vcombine_u8(vcreate_u8(0x8040201008040201llu),
+   const uint8x16_t magic_mask = vcombine_u8(vcreate_u8(0x8040201008040201llu),
                                                       vcreate_u8(0x8040201008040201llu));
 
    int xend = imgWidth - 3;
